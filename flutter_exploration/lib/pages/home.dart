@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       centerTitle: true,
-      backgroundColor: Color.fromARGB(255, 186, 141, 38),
+      backgroundColor: Color.fromARGB(255, 0, 148, 197),
       leading: GestureDetector(
         onTap: () {},
         child: Container(
