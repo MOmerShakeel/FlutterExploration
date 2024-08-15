@@ -8,21 +8,74 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [searchField()],
+      ),
+    );
+  }
+
+  Container searchField() {
+    return Container(
+      margin: EdgeInsets.only(top: 20, right: 20, left: 20),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            color: Color(0xff1D1617).withOpacity(0.11),
+            blurRadius: 40,
+            spreadRadius: 0.0)
+      ]),
+      child: TextField(
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: EdgeInsets.all(15),
+          hintText: "Search Here",
+          hintStyle: TextStyle(fontSize: 16, color: Colors.black38),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset("assets/icons/searchicon.svg"),
+          ),
+          suffixIcon: Container(
+            width: 100,
+            child: IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  VerticalDivider(
+                    color: Colors.black,
+                    thickness: 0.2,
+                    indent: 10,
+                    endIndent: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset("assets/icons/filtericon.svg"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
     );
   }
 
   AppBar appBar() {
     return AppBar(
       title: const Text(
-        "Amazon",
+        "Flutter Exploration",
         style: TextStyle(
           fontSize: 24,
-          color: Colors.white,
+          color: Color.fromARGB(255, 0, 0, 0),
           fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: Color.fromARGB(255, 37, 70, 81),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       leading: GestureDetector(
         onTap: () {},
         child: Container(
@@ -31,7 +84,7 @@ class HomePage extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 234, 234, 234),
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
           child: SvgPicture.asset(
             "assets/icons/back-button.svg",
@@ -49,7 +102,7 @@ class HomePage extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Color.fromARGB(255, 234, 234, 234),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             child: SvgPicture.asset(
               "assets/icons/options.svg",
