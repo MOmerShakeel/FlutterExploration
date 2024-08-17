@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   VerticalDivider(
-                    color: Colors.black,
+                    color: const Color.fromARGB(255, 246, 117, 117),
                     thickness: 0.2,
                     indent: 10,
                     endIndent: 10,
