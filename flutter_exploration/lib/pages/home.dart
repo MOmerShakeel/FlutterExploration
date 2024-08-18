@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
         "Flutter Exploration",
         style: TextStyle(
           fontSize: 24,
-          color: Color.fromARGB(255, 191, 13, 13),
+          color: Color.fromARGB(255, 0, 159, 35),
           fontWeight: FontWeight.bold,
         ),
       ),
