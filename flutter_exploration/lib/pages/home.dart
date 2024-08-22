@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       centerTitle: true,
-      backgroundColor: Color.fromARGB(255, 19, 196, 96),
+      backgroundColor: Color.fromARGB(255, 127, 214, 165),
       leading: GestureDetector(
         onTap: () {},
         child: Container(
