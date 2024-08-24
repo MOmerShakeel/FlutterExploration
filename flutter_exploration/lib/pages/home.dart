@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter/widgets.dart";
 import "package:flutter_svg/svg.dart";
 
 class HomePage extends StatelessWidget {
@@ -10,7 +11,38 @@ class HomePage extends StatelessWidget {
       appBar: appBar(),
       backgroundColor: Colors.white,
       body: Column(
-        children: [searchField()],
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          searchField(),
+          SizedBox(
+            height: 40,
+          ),
+          Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 15),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                padding: EdgeInsets.all(40),
+                color: const Color.fromARGB(255, 219, 255, 177),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -67,10 +99,10 @@ class HomePage extends StatelessWidget {
   AppBar appBar() {
     return AppBar(
       title: const Text(
-        "Flutter Exploration",
+        "Shajarkaari",
         style: TextStyle(
           fontSize: 24,
-          color: Color.fromARGB(255, 0, 159, 35),
+          color: Color.fromARGB(255, 0, 0, 0),
           fontWeight: FontWeight.bold,
         ),
       ),
