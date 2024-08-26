@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           contentPadding: EdgeInsets.all(15),
-          hintText: "Search Here",
+          hintText: "Search",
           hintStyle: TextStyle(fontSize: 16, color: Colors.black38),
           prefixIcon: Padding(
             padding: const EdgeInsets.all(12),
