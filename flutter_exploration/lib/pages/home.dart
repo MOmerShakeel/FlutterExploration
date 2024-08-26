@@ -73,8 +73,8 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  VerticalDivider(
-                    color: const Color.fromARGB(255, 246, 117, 117),
+                  const VerticalDivider(
+                    color: Color.fromARGB(255, 91, 91, 91),
                     thickness: 0.2,
                     indent: 10,
                     endIndent: 10,
@@ -107,16 +107,16 @@ class HomePage extends StatelessWidget {
         ),
       ),
       centerTitle: true,
-      backgroundColor: Color.fromARGB(255, 127, 214, 165),
+      backgroundColor: const Color.fromARGB(255, 127, 214, 165),
       leading: GestureDetector(
         onTap: () {},
         child: Container(
           width: 60,
-          margin: EdgeInsets.all(8),
+          margin: const EdgeInsets.all(8),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
           child: SvgPicture.asset(
             "assets/icons/back-button.svg",
@@ -129,12 +129,12 @@ class HomePage extends StatelessWidget {
         GestureDetector(
           onTap: () {},
           child: Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             width: 40,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
             ),
             child: SvgPicture.asset(
               "assets/icons/options.svg",
