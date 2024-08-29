@@ -102,12 +102,12 @@ class HomePage extends StatelessWidget {
         "Shajarkaari",
         style: TextStyle(
           fontSize: 24,
-          color: Color.fromARGB(255, 0, 0, 0),
+          color: Color.fromARGB(255, 255, 255, 255),
           fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: const Color.fromARGB(255, 127, 214, 165),
+      backgroundColor: Color.fromARGB(255, 29, 185, 97),
       leading: GestureDetector(
         onTap: () {},
         child: Container(
