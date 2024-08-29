@@ -1,11 +1,25 @@
 import "package:flutter/material.dart";
+import "package:flutter/widgets.dart";
+import "package:flutter_exploration/models/category_model.dart";
 import "package:flutter_svg/svg.dart";
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<CategoryModel> categories = [];
+
+  void _getCategories() {
+    categories = CategoryModel.getCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _getCategories();
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -36,12 +50,43 @@ class HomePage extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                height: 150,
-                padding: EdgeInsets.all(40),
-                color: Color.fromARGB(255, 255, 255, 255),
-                child: ListView.builder(
+                height: 100,
+                padding: EdgeInsets.only(left: 15, right: 15),
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => SizedBox(
+                    width: 25,
+                  ),
+                  itemCount: categories.length,
+                  scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container();
+                    return Container(
+                      width: 120,
+                      decoration: BoxDecoration(
+                          color: categories[index].boxColor?.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child:
+                                  SvgPicture.asset(categories[index].iconPath),
+                            ),
+                          ),
+                          Text(
+                            categories[index].name,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400),
+                          )
+                        ],
+                      ),
+                    );
                   },
                 ),
               )
@@ -69,7 +114,7 @@ class HomePage extends StatelessWidget {
           hintText: "Search...",
           hintStyle: TextStyle(fontSize: 16, color: Colors.black38),
           prefixIcon: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12),
             child: SvgPicture.asset("assets/icons/searchicon.svg"),
           ),
           suffixIcon: Container(
@@ -78,14 +123,14 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const VerticalDivider(
+                  VerticalDivider(
                     color: Color.fromARGB(255, 91, 91, 91),
                     thickness: 0.2,
                     indent: 10,
                     endIndent: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: SvgPicture.asset("assets/icons/filtericon.svg"),
                   ),
                 ],
@@ -103,30 +148,30 @@ class HomePage extends StatelessWidget {
 
   AppBar appBar() {
     return AppBar(
-      title: const Text(
-        "Shajarkaari",
+      title: Text(
+        "Konoha Food Center",
         style: TextStyle(
-          fontSize: 24,
-          color: Color.fromARGB(255, 255, 255, 255),
+          fontSize: 18,
+          color: Color.fromARGB(255, 0, 0, 0),
           fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: Color.fromARGB(255, 29, 185, 97),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       leading: GestureDetector(
         onTap: () {},
         child: Container(
-          width: 60,
-          margin: const EdgeInsets.all(8),
+          width: 25,
+          margin: EdgeInsets.all(10),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(5),
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
           child: SvgPicture.asset(
             "assets/icons/back-button.svg",
-            height: 30,
-            width: 30,
+            height: 25,
+            width: 25,
           ),
         ),
       ),
@@ -134,17 +179,17 @@ class HomePage extends StatelessWidget {
         GestureDetector(
           onTap: () {},
           child: Container(
-            margin: const EdgeInsets.all(8),
-            width: 40,
+            margin: EdgeInsets.all(10),
+            width: 25,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(5),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             child: SvgPicture.asset(
               "assets/icons/options.svg",
-              height: 30,
-              width: 30,
+              height: 25,
+              width: 25,
             ),
           ),
         ),
