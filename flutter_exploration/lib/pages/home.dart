@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:flutter_svg/svg.dart";
 
 class HomePage extends StatelessWidget {
@@ -37,8 +36,14 @@ class HomePage extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                height: 150,
                 padding: EdgeInsets.all(40),
-                color: const Color.fromARGB(255, 219, 255, 177),
+                color: Color.fromARGB(255, 255, 255, 255),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Container();
+                  },
+                ),
               )
             ],
           ),
