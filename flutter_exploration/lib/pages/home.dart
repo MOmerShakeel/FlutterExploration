@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           searchField(),
           SizedBox(
-            height: 40,
+            height: 20,
           ),
           _categoriesSection(),
           SizedBox(
@@ -43,82 +43,86 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 20,
           ),
-          Column(
-            children: [
-              Container(
-                height: 70,
-                margin: EdgeInsets.only(left: 15),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Popular Items",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListView.separated(
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.all(15),
-                    height: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.amber.shade200.withOpacity(0.4),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SvgPicture.asset(
-                          popular[index].imgPath,
-                          height: 70,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              popular[index].name,
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              popular[index].difficultyLevel +
-                                  ' | ' +
-                                  popular[index].timeDuration +
-                                  ' | ' +
-                                  popular[index].calorieCount,
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w200),
-                            )
-                          ],
-                        ),
-                        SvgPicture.asset(
-                          "assets/icons/options.svg",
-                          height: 30,
-                        )
-                      ],
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) => SizedBox(
-                  height: 10,
-                ),
-                itemCount: popular.length,
-                shrinkWrap: true,
-              )
-            ],
-          )
+          _popularSection()
         ],
       ),
+    );
+  }
+
+  Column _popularSection() {
+    return Column(
+      children: [
+        Container(
+          height: 70,
+          margin: EdgeInsets.only(left: 15),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Popular Items",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 1.0,
+        ),
+        ListView.separated(
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.all(15),
+              height: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.amber.shade200.withOpacity(0.4),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SvgPicture.asset(
+                    popular[index].imgPath,
+                    height: 70,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        popular[index].name,
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        popular[index].difficultyLevel +
+                            ' | ' +
+                            popular[index].timeDuration +
+                            ' | ' +
+                            popular[index].calorieCount,
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w200),
+                      )
+                    ],
+                  ),
+                  SvgPicture.asset(
+                    "assets/icons/options.svg",
+                    height: 30,
+                  )
+                ],
+              ),
+            );
+          },
+          separatorBuilder: (context, index) => SizedBox(
+            height: 10,
+          ),
+          itemCount: popular.length,
+          shrinkWrap: true,
+        )
+      ],
     );
   }
 
@@ -141,7 +145,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SizedBox(
-          height: 2,
+          height: 1.0,
         ),
         Container(
           height: 240,
@@ -241,7 +245,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SizedBox(
-          height: 20,
+          height: 12,
         ),
         Container(
           height: 100,
