@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/widgets.dart";
 import "package:flutter_exploration/models/category_model.dart";
 import "package:flutter_exploration/models/diet_model.dart";
+import "package:flutter_exploration/models/popular_model.dart";
 import "package:flutter_svg/svg.dart";
 
 class HomePage extends StatefulWidget {
@@ -14,10 +15,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<CategoryModel> categories = [];
   List<DietModel> diets = [];
+  List<PopularModel> popular = [];
 
   void getInitialInfo() {
     categories = CategoryModel.getCategories();
     diets = DietModel.getDiets();
+    popular = PopularModel.getPopular();
   }
 
   @override
@@ -26,8 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           searchField(),
           SizedBox(
@@ -35,9 +37,86 @@ class _HomePageState extends State<HomePage> {
           ),
           _categoriesSection(),
           SizedBox(
-            height: 40,
+            height: 20,
           ),
-          _dietsSection()
+          _dietsSection(),
+          SizedBox(
+            height: 20,
+          ),
+          Column(
+            children: [
+              Container(
+                height: 70,
+                margin: EdgeInsets.only(left: 15),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Popular Items",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ListView.separated(
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: EdgeInsets.all(15),
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.amber.shade200.withOpacity(0.4),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SvgPicture.asset(
+                          popular[index].imgPath,
+                          height: 70,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              popular[index].name,
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              popular[index].difficultyLevel +
+                                  ' | ' +
+                                  popular[index].timeDuration +
+                                  ' | ' +
+                                  popular[index].calorieCount,
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w200),
+                            )
+                          ],
+                        ),
+                        SvgPicture.asset(
+                          "assets/icons/options.svg",
+                          height: 30,
+                        )
+                      ],
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10,
+                ),
+                itemCount: popular.length,
+                shrinkWrap: true,
+              )
+            ],
+          )
         ],
       ),
     );
@@ -62,7 +141,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 2,
         ),
         Container(
           height: 240,
