@@ -37,100 +37,110 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 40,
           ),
-          Column(
-            children: [
-              Container(
-                height: 70,
-                margin: EdgeInsets.only(left: 15),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Recommended Diets",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 240,
-                padding: EdgeInsets.only(left: 15, right: 15),
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.teal.shade200.withOpacity(0.7)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 90,
-                            width: 90,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: SvgPicture.asset(diets[index].imgPath),
-                            ),
-                          ),
-                          Text(
-                            diets[index].name,
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black),
-                          ),
-                          Text(
-                            diets[index].difficultyLevel +
-                                ' | ' +
-                                diets[index].timeDuration +
-                                ' | ' +
-                                diets[index].calorieCount,
-                            style: TextStyle(color: Colors.black, fontSize: 13),
-                          ),
-                          Container(
-                            height: 35,
-                            width: 130,
-                            child: Center(
-                              child: Text(
-                                "View",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [
-                                  Color.fromARGB(255, 193, 241, 117),
-                                  Color.fromARGB(255, 238, 245, 116)
-                                ]),
-                                borderRadius: BorderRadius.circular(8)),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => SizedBox(
-                    width: 25,
-                  ),
-                  itemCount: diets.length,
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
-            ],
-          )
+          _dietsSection()
         ],
       ),
+    );
+  }
+
+  Column _dietsSection() {
+    return Column(
+      children: [
+        Container(
+          height: 70,
+          margin: EdgeInsets.only(left: 15),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Recommended Diets",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 240,
+          padding: EdgeInsets.only(left: 15, right: 15),
+          child: ListView.separated(
+            itemBuilder: (context, index) {
+              return Container(
+                width: 200,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color.fromARGB(255, 229, 255, 203).withOpacity(0.7)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 90,
+                      width: 90,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: SvgPicture.asset(diets[index].imgPath),
+                      ),
+                    ),
+                    Text(
+                      diets[index].name,
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      diets[index].difficultyLevel +
+                          ' | ' +
+                          diets[index].timeDuration +
+                          ' | ' +
+                          diets[index].calorieCount,
+                      style: TextStyle(color: Colors.black, fontSize: 13),
+                    ),
+                    Container(
+                      height: 35,
+                      width: 130,
+                      child: Center(
+                        child: Text(
+                          "View",
+                          style: TextStyle(
+                              color: diets[index].viewIsSelected
+                                  ? Colors.black
+                                  : Colors.grey,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            diets[index].viewIsSelected
+                                ? Color.fromARGB(255, 193, 241, 117)
+                                : Colors.transparent,
+                            diets[index].viewIsSelected
+                                ? Color.fromARGB(255, 238, 245, 116)
+                                : Colors.transparent
+                          ]),
+                          borderRadius: BorderRadius.circular(8)),
+                    )
+                  ],
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => SizedBox(
+              width: 25,
+            ),
+            itemCount: diets.length,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+      ],
     );
   }
 
